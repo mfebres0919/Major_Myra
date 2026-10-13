@@ -2,13 +2,40 @@
    MAJOR MYRA — HOMEPAGE SCRIPTS
    ========================================================================== */
 
+/* ---------- Autoplay helper for every background video ----------
+   All the videos are silent, so browsers allow them to start on their own
+   as long as they're muted and inline. If a phone still blocks it (iPhone
+   Low Power Mode), they start on the visitor's first touch or scroll.
+   Videos play even with reduced motion turned on: they're the content of a
+   filmmaker's site, and the hero has its own pause button. */
+const blockedVideos = new Set();
+
+function autoplay(video) {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  const attempt = video.play();
+  if (attempt && attempt.catch) {
+    attempt.catch(() => blockedVideos.add(video));
+  }
+}
+
+['touchstart', 'pointerdown', 'scroll', 'keydown'].forEach((type) => {
+  window.addEventListener(type, () => {
+    blockedVideos.forEach((video) => {
+      blockedVideos.delete(video);
+      if (!video.dataset.held) video.play().catch(() => {});
+    });
+  }, { passive: true, capture: true });
+});
+
 /* ---------- Hero video: portrait cut on phones, pause button ---------- */
 (function () {
   const hero = document.querySelector('.hero');
   const video = document.getElementById('hero-video');
   if (!hero || !video) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Phones get the portrait crop (set before it loads, so only one file downloads)
   if (window.matchMedia('(max-width: 767px)').matches) {
@@ -17,11 +44,16 @@
     video.load();
   }
 
-  // Reduced motion: stay on the opening frame instead of playing
-  if (reduceMotion) {
-    video.removeAttribute('autoplay');
-    video.pause();
-  }
+  autoplay(video);
+  // Start again once it can, in case the first try came before it was ready
+  video.addEventListener('canplay', () => {
+    if (!hero.classList.contains('is-paused')) autoplay(video);
+  }, { once: true });
+
+  // Keep it going when the visitor comes back to the tab
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && !hero.classList.contains('is-paused')) autoplay(video);
+  });
 
   const button = document.getElementById('hero-pause');
 
@@ -29,12 +61,17 @@
     hero.classList.toggle('is-paused', paused);
     button.setAttribute('aria-pressed', String(paused));
     button.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
-    if (paused) video.pause();
-    else video.play().catch(() => {});
+    // Paused by the visitor: the first-touch retry leaves it alone
+    if (paused) {
+      video.dataset.held = 'true';
+      video.pause();
+    } else {
+      delete video.dataset.held;
+      autoplay(video);
+    }
     hero.dispatchEvent(new CustomEvent('hero:pause', { detail: paused }));
   }
 
-  if (reduceMotion) setPaused(true);
   button.addEventListener('click', () => setPaused(!hero.classList.contains('is-paused')));
 })();
 
@@ -240,12 +277,10 @@ function trackProgress(track, sticky) {
 
 /* ---------- Project clips: load and play only while the carousel is on screen ----------
    Each card's <video> has its file in data-src, so nothing downloads until
-   the section is near. Off screen (or in a hidden tab) they pause. Reduced
-   motion: the cover images stay, no clips. */
+   the section is near. Off screen (or in a hidden tab) they pause. */
 (function () {
   const section = document.querySelector('.projects');
   if (!section || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const videos = [...section.querySelectorAll('.reel__video')];
   let loaded = false;
@@ -263,7 +298,7 @@ function trackProgress(track, sticky) {
     videos.forEach((video) => {
       // Clones only show on desktop; skip any card that isn't rendered
       const shown = video.offsetParent !== null;
-      if (visible && shown && !document.hidden) video.play().catch(() => {});
+      if (visible && shown && !document.hidden) autoplay(video);
       else video.pause();
     });
   }
@@ -338,7 +373,7 @@ function trackProgress(track, sticky) {
     new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         if (!video.getAttribute('src')) video.src = video.dataset.src;
-        if (!reduceMotion) video.play().catch(() => {});
+        autoplay(video);
       } else {
         video.pause();
       }
