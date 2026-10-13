@@ -47,6 +47,7 @@
     header.classList.toggle('is-open', open);
     // Hold the page still behind the open menu
     document.documentElement.style.overflow = open ? 'hidden' : '';
+    document.documentElement.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   }
@@ -121,4 +122,34 @@
   }, { passive: true });
   window.addEventListener('resize', update);
   update();
+})();
+
+
+/* ---------- Back to top ----------
+   Shows once the first screen has scrolled away; glides up through Lenis
+   when smooth scrolling is on, then hands focus back to the top. */
+(function () {
+  const button = document.querySelector('.to-top');
+  if (!button) return;
+  button.hidden = false;
+
+  let queued = false;
+  function update() {
+    queued = false;
+    button.classList.toggle('is-visible', window.scrollY > window.innerHeight);
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!queued) {
+      queued = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+
+  button.addEventListener('click', () => {
+    if (window.lenis) window.lenis.scrollTo(0, { duration: 1.6 });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.logo')?.focus({ preventScroll: true });
+  });
 })();

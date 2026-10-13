@@ -613,3 +613,67 @@ button {
 .is-loading .statement__underline path {
   animation: none;
 }
+
+
+
+/* ==========================================================================
+   BACK TO TOP — round button, bottom right. Hidden until JS shows it, then
+   fades and slides in once the first screen has scrolled away.
+   ========================================================================== */
+
+.to-top {
+  position: fixed;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid rgba(246, 242, 236, 0.35);
+  border-radius: 50%;
+  background-color: rgba(15, 13, 12, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-ivory);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.75rem);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition), background-color var(--transition), border-color var(--transition);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top:hover {
+  border-color: var(--color-flame);
+  background-color: var(--color-flame);
+}
+
+.to-top svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--transition);
+}
+
+.to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Out of the way while the mobile menu is open */
+.menu-open .to-top {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (min-width: 1024px) {
+  .to-top {
+    right: 2rem;
+    bottom: 2rem;
+  }
+}
