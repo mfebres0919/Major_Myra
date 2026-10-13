@@ -1,0 +1,615 @@
+/* ==========================================================================
+   MAJOR MYRA — GLOBAL STYLES
+   Fonts, tokens, reset, layout helpers, buttons and the header.
+   Homepage sections live in styles.css.
+   ========================================================================== */
+
+/* ---------- Fonts (self-hosted) ----------
+   Caudex: her wordmark and headings, as on her current site.
+   Jost (variable 300–500): body, nav and small labels. */
+@font-face {
+  font-family: 'Caudex';
+  src: url('../fonts/caudex-latin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caudex';
+  src: url('../fonts/caudex-latin-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caudex';
+  src: url('../fonts/caudex-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../fonts/jost-latin-variable.woff2') format('woff2');
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ==========================================================================
+   DESIGN TOKENS — ink and ivory, with the deep wine from her portrait as the
+   one accent. Quiet, editorial, film-poster restraint.
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-ink: #0f0d0c; /* near-black: text, dark sections */
+  --color-ink-soft: #2a2623;
+  --color-ivory: #f6f2ec; /* page background */
+  --color-sand: #e9e1d6; /* lines and tinted surfaces on ivory */
+  --color-stone: #6f6760; /* muted text on ivory */
+  --color-wine: #7a1419; /* accent */
+  --color-flame: #e0452e; /* bold word in the projects headline (to be decided) */
+  --color-white: #ffffff;
+
+  /* Type */
+  --font-display: 'Caudex', Georgia, 'Times New Roman', serif;
+  --font-body: 'Jost', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --container-width: 1240px;
+  --gutter: 1.25rem;
+  --header-height: 4.5rem;
+  --transition: 0.35s ease;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 2.5rem;
+    --header-height: 5.25rem;
+  }
+}
+
+
+/* ---------- Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Lenis does its own smoothing; CSS smooth scroll on top would fight it */
+html.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-ink);
+  background-color: var(--color-ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container-width) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+
+/* ==========================================================================
+   BUTTONS — square-edged and spaced out, like credits on a film poster
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.9rem 2rem;
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn--light {
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+.btn--light:hover {
+  background-color: var(--color-white);
+}
+
+/* See-through, for dark backgrounds */
+.btn--ghost {
+  border-color: rgba(246, 242, 236, 0.55);
+  color: var(--color-ivory);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-ivory);
+  background-color: rgba(246, 242, 236, 0.1);
+}
+
+.btn--dark {
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+.btn--dark:hover {
+  background-color: var(--color-wine);
+}
+
+
+/* ==========================================================================
+   HEADER
+   Fixed. Over the hero: see-through with ivory text and a fine line along
+   its foot. .is-scrolled (global.js): solid black with ivory text.
+   Mobile: wordmark and a two-line menu button; links in a black panel.
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: var(--color-ivory);
+  border-bottom: 1px solid rgba(246, 242, 236, 0.22);
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.header.is-scrolled,
+.header.is-open {
+  background-color: var(--color-ink);
+  border-bottom-color: rgba(246, 242, 236, 0.14);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+/* Wordmark: Caudex bold, as on her current site */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+/* ---------- Mobile menu panel ----------
+   Slides in from the left over 3/4 of the screen, under the header bar;
+   the links then fade in one after another. The rest of the page dims
+   behind a blurred scrim (tapping it closes the menu, global.js). */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 75%;
+  height: 100dvh;
+  padding: calc(var(--header-height) + 2rem) var(--gutter) 2.5rem;
+  overflow-y: auto;
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+  border-right: 1px solid rgba(246, 242, 236, 0.14);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.55s cubic-bezier(0.7, 0, 0.2, 1), visibility 0.55s;
+}
+
+.header.is-open .nav {
+  transform: none;
+  visibility: visible;
+}
+
+/* While open the bar itself goes clear, so the panel is the only black and
+   the close button sits over the scrim */
+@media (max-width: 1023px) {
+  .header.is-open {
+    background-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
+
+/* Scrim over the uncovered quarter */
+.header::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: rgba(15, 13, 12, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0.45s;
+}
+
+.header.is-open::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__list > li {
+  opacity: 0;
+  transform: translateX(-1rem);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* One after another once the panel is mostly in */
+.header.is-open .nav__list > li {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.25s + var(--i, 0) * 0.08s);
+}
+
+.nav__list > li:nth-child(2) { --i: 1; }
+.nav__list > li:nth-child(3) { --i: 2; }
+.nav__list > li:nth-child(4) { --i: 3; }
+.nav__list > li:nth-child(5) { --i: 4; }
+
+.nav__link {
+  display: block;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(246, 242, 236, 0.12);
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  transition: color var(--transition);
+}
+
+/* Section on screen (global.js): flame text in the mobile panel */
+.nav__link[aria-current='true'] {
+  color: var(--color-flame);
+}
+
+/* ---------- Mobile panel extras: contact button + socials ---------- */
+
+.nav__extras {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+  opacity: 0;
+  transform: translateX(-1rem);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.header.is-open .nav__extras {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.7s;
+}
+
+.nav__cta {
+  justify-self: start;
+}
+
+.nav__socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(246, 242, 236, 0.35);
+  border-radius: 50%;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.nav__social:hover {
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+.nav__social svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav__list > li,
+  .nav__extras,
+  .header::after {
+    transition-duration: 0s;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ---------- Menu button: two lines that cross ---------- */
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-toggle__bar {
+  height: 1px;
+  background-color: currentColor;
+  transition: transform var(--transition);
+}
+
+.header.is-open .nav-toggle__bar:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.header.is-open .nav-toggle__bar:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* ---------- Desktop: links in a row ---------- */
+
+@media (min-width: 1024px) {
+  .logo {
+    font-size: 1.375rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav {
+    position: static;
+    z-index: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    overflow: visible;
+    background: none;
+    color: inherit;
+    border: 0;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav__list > li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav__extras {
+    display: none;
+  }
+
+  /* Desktop: section on screen keeps its underline; the rest stay white */
+  .nav__link[aria-current='true'] {
+    color: inherit;
+  }
+
+  .header::after {
+    display: none;
+  }
+
+  .nav__list {
+    display: flex;
+    gap: 2.25rem;
+  }
+
+  .nav__link {
+    position: relative;
+    padding: 0.35rem 0;
+    border: 0;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* Hairline that draws in under the link on hover and for the current page */
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+  }
+
+  .nav__link:hover::after,
+  .nav__link[aria-current='true']::after {
+    transform: scaleX(1);
+  }
+}
+
+
+
+/* ==========================================================================
+   LOADER
+   Shown only while <html> has .is-loading (added in <head>, removed by
+   global.js once the line under "MYRA" has drawn). The screen then slides
+   up out of view. Failsafe: it lifts on its own after 4.5s regardless.
+   ========================================================================== */
+
+.loader {
+  display: none;
+}
+
+.is-loading .loader,
+.loader.is-leaving {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+.is-loading .loader {
+  animation: loader-failsafe 0.6s ease 4.5s forwards;
+}
+
+.is-loading body {
+  overflow: hidden;
+}
+
+.loader.is-leaving {
+  animation: loader-leave 0.9s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+@keyframes loader-leave {
+  to { transform: translateY(-100%); }
+}
+
+@keyframes loader-failsafe {
+  to { opacity: 0; visibility: hidden; }
+}
+
+.loader__mark {
+  display: flex;
+  gap: 0.3em;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  opacity: 0;
+  animation: loader-in 0.7s ease 0.1s forwards;
+}
+
+@keyframes loader-in {
+  to { opacity: 1; }
+}
+
+.loader__word {
+  position: relative;
+}
+
+.loader__underline {
+  position: absolute;
+  left: -3%;
+  bottom: -0.32em;
+  width: 106%;
+  height: 0.28em;
+  overflow: visible;
+}
+
+.loader__underline path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: loader-draw 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.65s forwards;
+}
+
+@keyframes loader-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Hold the hero's underline until the loader has lifted, so it draws in view */
+.is-loading .statement__underline path {
+  animation: none;
+}

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Major Myra | Writer, Director &amp; Creative Director</title>
+  <meta name="description" content="Major Myra creates authentic films and campaigns that speak to the soul, for partners like Lionsgate, Meta, PepsiCo and DoorDash. Atlanta, GA.">
+  <!-- Concept homepage prepared by MigsFlow. Not indexed. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Above-the-fold fonts only: the logo (Caudex bold) and the hero copy -->
+  <link rel="preload" href="fonts/caudex-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/jost-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- global.css (tokens, reset, buttons, header) → styles.css (homepage sections) -->
+  <link rel="stylesheet" href="css/vendor/lenis.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Loading screen: only when JavaScript runs and motion is welcome, so it
+       can never hide the page (global.js lifts it; CSS has a failsafe) -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('is-loading');
+    }
+  </script>
+
+  <script src="javascript/vendor/lenis.min.js" defer></script>
+  <script src="javascript/smooth-scroll.js" defer></script>
+  <script src="javascript/global.js" defer></script>
+  <script src="javascript/script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       LOADER — the wordmark centred, a hand-drawn line drawing in under
+       "MYRA", then the screen lifts away (global.js).
+       ========================================================================== -->
+  <div class="loader" aria-hidden="true">
+    <p class="loader__mark">
+      MAJOR
+      <span class="loader__word">
+        MYRA
+        <svg class="loader__underline" viewBox="0 0 300 20" preserveAspectRatio="none"><path pathLength="1" d="M3 13 C 70 6, 150 5, 215 8 S 285 14, 297 7" /></svg>
+      </span>
+    </p>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==========================================================================
+       HEADER — see-through over the hero video with a fine line along its
+       foot; turns black once the page scrolls (global.js adds .is-scrolled).
+       The wordmark keeps the Caudex bold of her current site.
+       ========================================================================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="#top" aria-label="Major Myra, home">MAJOR MYRA</a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#top" aria-current="true">Home</a></li>
+          <li><a class="nav__link" href="#projects">Projects</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#contact" data-inquiry="team">Join the Team</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Mobile menu only: contact button and socials -->
+        <div class="nav__extras">
+          <a class="btn btn--light nav__cta" href="#contact">Get in Touch</a>
+          <div class="nav__socials">
+            <a class="nav__social" href="https://www.instagram.com/majormyra/" target="_blank" rel="noopener" aria-label="Major Myra on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></a>
+            <a class="nav__social" href="https://www.tiktok.com/@majormyra" target="_blank" rel="noopener" aria-label="Major Myra on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.5 3c.3 2.2 1.5 3.6 3.5 3.9v2.6c-1.3.1-2.5-.3-3.5-1v5.9a5.2 5.2 0 1 1-5.2-5.2c.3 0 .5 0 .8.1v2.7a2.5 2.5 0 1 0 1.7 2.4V3h2.7Z" /></svg></a>
+          </div>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========================================================================
+         HERO — her film "Cycles" playing silently behind three statements that
+         fade in and out in the centre (script.js), with her clients and
+         partners on a frosted band along the bottom. Phones get a portrait crop
+         of the video. Reduced motion: the video stays on its first frame and
+         the statements are shown one at a time without fading.
+         Video: videos/hero.mp4 (45s, 1280px) and hero-mobile.mp4 (540×960),
+         cut from the film on her current site; originals in source-video/.
+         ======================================================================== -->
+    <section class="hero" id="top" aria-label="Introduction">
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" id="hero-video" autoplay muted loop playsinline preload="metadata"
+               poster="images/hero-poster.webp" data-mobile-src="videos/hero-mobile.mp4" data-mobile-poster="images/hero-poster-mobile.webp">
+          <source src="videos/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">Writer · Director · Creative Director</p>
+
+        <!-- One statement shows at a time. The first is visible without JS. -->
+        <div class="hero__statements" aria-live="polite">
+          <div class="statement is-active">
+            <h1 class="statement__title">Stories that feel like <em class="statement__accent">home<svg class="statement__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 13 C 70 6, 150 5, 215 8 S 285 14, 297 7" /></svg></em>.</h1>
+            <p class="statement__text">Films written and directed to put a spotlight on the beauty of our community, told with honesty, warmth and soul.</p>
+          </div>
+          <div class="statement" hidden>
+            <h2 class="statement__title">Culture, captured with <em class="statement__accent">intention<svg class="statement__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 13 C 70 6, 150 5, 215 8 S 285 14, 297 7" /></svg></em>.</h2>
+            <p class="statement__text">From Lionsgate to PepsiCo, every campaign is crafted to connect culture with an audience of over 900K supporters.</p>
+          </div>
+          <div class="statement" hidden>
+            <h2 class="statement__title">Built by a team of <em class="statement__accent">visionaries<svg class="statement__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 13 C 70 6, 150 5, 215 8 S 285 14, 297 7" /></svg></em>.</h2>
+            <p class="statement__text">Major Myra is growing. Writers, editors, stylists and storytellers: let's create what comes next, together.</p>
+          </div>
+        </div>
+
+        <div class="hero__actions">
+          <a class="btn btn--light" href="#work">View the Work</a>
+          <a class="btn btn--ghost" href="#contact" data-inquiry="team">Join the Team</a>
+        </div>
+      </div>
+
+      <!-- Progress for the three statements, plus pause for the video -->
+      <div class="container hero__foot">
+        <ol class="hero__progress" aria-hidden="true">
+          <li class="hero__progress-item is-active"><span></span></li>
+          <li class="hero__progress-item"><span></span></li>
+          <li class="hero__progress-item"><span></span></li>
+        </ol>
+        <button class="hero__pause" id="hero-pause" type="button" aria-pressed="false" aria-label="Pause background video">
+          <svg class="hero__pause-icon hero__pause-icon--pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
+          <svg class="hero__pause-icon hero__pause-icon--play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 7 5.5Z" /></svg>
+        </button>
+      </div>
+
+      <!-- Clients & partners: a frosted band along the foot of the hero, logos
+           sliding in a slow loop (two identical groups make it seamless; the
+           copy is hidden from screen readers). Pauses on hover.
+           Logos: images/logos/ (trimmed from her current site; originals in
+           source-images/). -->
+      <div class="clients" aria-labelledby="clients-title">
+        <div class="container clients__inner">
+          <h2 class="clients__title" id="clients-title">Trusted by the best clients and partners</h2>
+          <div class="clients__window">
+            <div class="clients__track">
+              <ul class="clients__group">
+                <li class="client"><img class="client__logo" src="images/logos/lionsgate.webp" alt="Lionsgate" width="1216" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo" src="images/logos/meta.webp" alt="Meta" width="778" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo client__logo--tall" src="images/logos/pepsico.webp" alt="PepsiCo" width="204" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo" src="images/logos/doordash.webp" alt="DoorDash" width="329" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo client__logo--tall" src="images/logos/starry.webp" alt="Starry" width="202" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo client__logo--tall" src="images/logos/abff.webp" alt="American Black Film Festival" width="218" height="160" loading="lazy" decoding="async"></li>
+              </ul>
+              <ul class="clients__group" aria-hidden="true">
+                <li class="client"><img class="client__logo" src="images/logos/lionsgate.webp" alt="" width="1216" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo" src="images/logos/meta.webp" alt="" width="778" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo client__logo--tall" src="images/logos/pepsico.webp" alt="" width="204" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo" src="images/logos/doordash.webp" alt="" width="329" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo client__logo--tall" src="images/logos/starry.webp" alt="" width="202" height="160" loading="lazy" decoding="async"></li>
+                <li class="client"><img class="client__logo client__logo--tall" src="images/logos/abff.webp" alt="" width="218" height="160" loading="lazy" decoding="async"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PROJECTS INTRO — a huge outlined headline, driven by the scroll
+         (script.js): the words arrive ("The" from the left, "work" from the
+         right, "speaks." from below, "Press play." fades up slowly), each
+         filling in with ivory as it comes, then a line draws under "play." The last word is in the accent colour (--color-flame, to be
+         decided). Without JavaScript or with reduced motion: shown filled.
+         ======================================================================== -->
+    <section class="statement-fill" id="work" aria-label="Projects">
+      <div class="statement-fill__track">
+        <div class="statement-fill__sticky">
+          <div class="container">
+            <h2 class="fill-text">
+              <span class="fill-text__line" data-fill><span class="fill-word" data-enter="left">The</span> <span class="fill-word" data-enter="right">work</span></span>
+              <span class="fill-text__line" data-fill><span class="fill-word" data-enter="up">speaks.</span></span>
+              <span class="fill-text__line" data-fill><span class="fill-word" data-enter="fade">Press</span> <span class="fill-word fill-word--accent" data-enter="fade">play.<svg class="fill-text__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 13 C 70 6, 150 5, 215 8 S 285 14, 297 7" /></svg></span></span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PROJECTS — her Instagram reels in a carousel on cream. Every card
+         links to the reel on Instagram.
+         Desktop: a slow, endless glide that stops while hovered (the cloned
+         cards make the loop seamless and are hidden from screen readers).
+         Phones/tablets: a swipeable row that moves on one card every 4s,
+         with arrows; touching it or using the arrows stops the autoplay.
+         Reduced motion: no autoplay anywhere, arrows and swiping only.
+         Each card plays an 8s silent loop of its film (videos/projects/,
+         loaded only as the carousel comes into view) over its cover image
+         (images/projects/). Clips cut from her reels; originals in
+         source-video/ and source-images/.
+         ======================================================================== -->
+    <section class="projects" id="projects" aria-label="Selected projects">
+      <!-- Divider: the black of the headline section hanging down into the
+           cream in three layered arcs (the two outer ones see-through) -->
+      <svg class="projects__divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0v100c500 0 1000-96 1000-96V0H0Z" opacity=".35" />
+        <path d="M1000 0v100C500 100 0 4 0 4V0h1000Z" opacity=".35" />
+        <path d="M0 0v98.9l396.3-84a500.1 500.1 0 0 1 207.4 0l396.3 84V0H0Z" />
+      </svg>
+      <div class="projects__viewport" id="projects-viewport">
+        <ul class="projects__track">
+          <li class="reel">
+            <a class="reel__link" href="https://www.instagram.com/p/DUO1z0XkXtb/" target="_blank" rel="noopener" aria-label="Watch My Atl Smile on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/my-atl-smile.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/my-atl-smile.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">01</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Short film · 544K likes</span>
+                <span class="reel__title">My Atl Smile</span>
+                <span class="reel__credit">Written by Myracle</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel">
+            <a class="reel__link" href="https://www.instagram.com/p/DQ7PM3akXP2/" target="_blank" rel="noopener" aria-label="Watch Cycles on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/cycles.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/cycles.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">02</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Short film · 184K likes</span>
+                <span class="reel__title">Cycles</span>
+                <span class="reel__credit">Written &amp; directed by Myracle</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel">
+            <a class="reel__link" href="https://www.instagram.com/p/DNMRk5eNv2U/" target="_blank" rel="noopener" aria-label="Watch Roots on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/roots.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/roots.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">03</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Short film · 152K likes</span>
+                <span class="reel__title">Roots</span>
+                <span class="reel__credit">Written &amp; creative directed with JR</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel">
+            <a class="reel__link" href="https://www.instagram.com/p/DKk0OKXOWqA/" target="_blank" rel="noopener" aria-label="Watch Graduation on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/graduation.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/graduation.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">04</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Poem film · 25K likes</span>
+                <span class="reel__title">Graduation</span>
+                <span class="reel__credit">Written &amp; edited by Myracle</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel reel--clone" aria-hidden="true">
+            <a class="reel__link" tabindex="-1" href="https://www.instagram.com/p/DUO1z0XkXtb/" target="_blank" rel="noopener" aria-label="Watch My Atl Smile on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/my-atl-smile.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/my-atl-smile.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">01</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Short film · 544K likes</span>
+                <span class="reel__title">My Atl Smile</span>
+                <span class="reel__credit">Written by Myracle</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel reel--clone" aria-hidden="true">
+            <a class="reel__link" tabindex="-1" href="https://www.instagram.com/p/DQ7PM3akXP2/" target="_blank" rel="noopener" aria-label="Watch Cycles on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/cycles.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/cycles.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">02</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Short film · 184K likes</span>
+                <span class="reel__title">Cycles</span>
+                <span class="reel__credit">Written &amp; directed by Myracle</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel reel--clone" aria-hidden="true">
+            <a class="reel__link" tabindex="-1" href="https://www.instagram.com/p/DNMRk5eNv2U/" target="_blank" rel="noopener" aria-label="Watch Roots on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/roots.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/roots.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">03</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Short film · 152K likes</span>
+                <span class="reel__title">Roots</span>
+                <span class="reel__credit">Written &amp; creative directed with JR</span>
+              </span>
+            </a>
+          </li>
+          <li class="reel reel--clone" aria-hidden="true">
+            <a class="reel__link" tabindex="-1" href="https://www.instagram.com/p/DKk0OKXOWqA/" target="_blank" rel="noopener" aria-label="Watch Graduation on Instagram (opens in a new tab)">
+              <img class="reel__cover" src="images/projects/graduation.webp" alt="" width="360" height="640" loading="lazy" decoding="async">
+              <video class="reel__video" muted loop playsinline preload="none" data-src="videos/projects/graduation.mp4" aria-hidden="true"></video>
+              <span class="reel__top">
+                <span class="reel__index">04</span>
+                <span class="reel__ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></span>
+              </span>
+              <span class="reel__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10-6.5a1 1 0 0 0 0-1.72l-10-6.5A1 1 0 0 0 8 5.5Z" /></svg>
+              </span>
+              <span class="reel__info">
+                <span class="reel__kind">Poem film · 25K likes</span>
+                <span class="reel__title">Graduation</span>
+                <span class="reel__credit">Written &amp; edited by Myracle</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container projects__controls">
+        <div class="projects__arrows">
+          <button class="projects__arrow" type="button" data-dir="-1" aria-controls="projects-viewport" aria-label="Previous project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="11 6 5 12 11 18" /></svg>
+          </button>
+          <button class="projects__arrow" type="button" data-dir="1" aria-controls="projects-viewport" aria-label="Next project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" /></svg>
+          </button>
+        </div>
+        <a class="projects__more" href="https://www.instagram.com/majormyra/" target="_blank" rel="noopener">See more on Instagram</a>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ABOUT — three portraits cross-fading on the left (script.js), the
+         story and stats on the right, with a huge outlined "About Me"
+         drifting faintly behind as you scroll.
+         Copy adapted from her current site; stats: supporters from her bio,
+         partners from the logo band, degree from her "Graduation" post.
+         Photos: images/about/ (originals in source-images/).
+         ======================================================================== -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <!-- Divider: the cream of the projects hanging down into the black, in
+           the same three layered arcs as the divider above the projects -->
+      <svg class="about__divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0v100c500 0 1000-96 1000-96V0H0Z" opacity=".35" />
+        <path d="M1000 0v100C500 100 0 4 0 4V0h1000Z" opacity=".35" />
+        <path d="M0 0v98.9l396.3-84a500.1 500.1 0 0 1 207.4 0l396.3 84V0H0Z" />
+      </svg>
+
+      <p class="about__watermark" aria-hidden="true">About Me</p>
+
+      <div class="container about__inner">
+        <div class="about__media">
+          <div class="about__frame" aria-hidden="true"></div>
+          <div class="about__slides">
+          <img class="about__slide is-active" src="images/about/about-red-720.webp" srcset="images/about/about-red-720.webp 720w, images/about/about-red-1100.webp 1100w" sizes="(min-width: 1024px) 40vw, 90vw" alt="Myracle in a graduation cap and gown against a deep red backdrop" width="720" height="900" loading="lazy" decoding="async">
+          <img class="about__slide" src="images/about/about-ice-cream-720.webp" srcset="images/about/about-ice-cream-720.webp 720w, images/about/about-ice-cream-966.webp 966w" sizes="(min-width: 1024px) 40vw, 90vw" alt="Myracle in a pinstripe suit, smiling with an ice cream cone on a red cooler" width="720" height="900" loading="lazy" decoding="async">
+          <img class="about__slide" src="images/about/about-suit-720.webp" srcset="images/about/about-suit-720.webp 720w, images/about/about-suit-820.webp 820w" sizes="(min-width: 1024px) 40vw, 90vw" alt="Black and white portrait of Myracle in a tailored suit and tie" width="720" height="900" loading="lazy" decoding="async">
+          </div>
+          <ol class="about__dots" aria-hidden="true">
+            <li class="is-active"></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+
+        <div class="about__content">
+          <p class="about__eyebrow">Meet the creator</p>
+          <h2 class="about__title" id="about-title">What's up, I'm <em>Myracle.</em></h2>
+          <p class="about__lead">I create films that speak to the soul.</p>
+          <div class="about__text">
+            <p>As a writer and director, I connect culture to an audience of over 900K combined supporters that I love dearly. Every story starts with the people and places that raised me.</p>
+            <p>By crafting stories that place a spotlight on the beauty of my community, I bring authenticity to campaigns that feel like home, for partners like Lionsgate, Meta and PepsiCo.</p>
+          </div>
+
+          <dl class="about__stats">
+            <div class="about__stat">
+              <dt>Combined supporters</dt>
+              <dd>900K+</dd>
+            </div>
+            <div class="about__stat">
+              <dt>Brand &amp; festival partners</dt>
+              <dd>6</dd>
+            </div>
+            <div class="about__stat">
+              <dt>Film degree</dt>
+              <dd>B.F.A.</dd>
+            </div>
+          </dl>
+
+          <div class="about__actions">
+            <a class="btn btn--light" href="#contact">Work With Me</a>
+            <a class="about__link" href="#contact" data-inquiry="team">Join the team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         FINAL CTA — a marquee of big words scrolls behind a small tilted card
+         playing a clip of "Roots". While the section is pinned, scrolling
+         straightens the card and grows it to fill the screen (script.js sets
+         --grow, 0 → 1), then the headline and button fade in over the film
+         (--reveal) and a line draws under "matters."
+         Reduced motion / no JavaScript: shown at full size, headline visible.
+         Clip: videos/cta-roots.mp4 (12s, cropped above the burned-in
+         subtitles; original in source-video/).
+         ======================================================================== -->
+    <section class="cta-zoom" aria-labelledby="cta-title">
+      <div class="cta-zoom__track">
+        <div class="cta-zoom__sticky">
+          <div class="cta-zoom__marquee" aria-hidden="true">
+            <div class="cta-zoom__marquee-track">
+              <p class="cta-zoom__group"><span class="cta-zoom__word">Writer</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Director</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Creative Director</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Storyteller</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Atlanta</span><span class="cta-zoom__plus">+</span></p>
+              <p class="cta-zoom__group" aria-hidden="true"><span class="cta-zoom__word">Writer</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Director</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Creative Director</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Storyteller</span><span class="cta-zoom__plus">+</span><span class="cta-zoom__word">Atlanta</span><span class="cta-zoom__plus">+</span></p>
+            </div>
+          </div>
+
+          <div class="cta-zoom__card">
+            <video class="cta-zoom__video" muted loop playsinline preload="none" poster="images/cta-roots-poster.webp" data-src="videos/cta-roots.mp4" aria-hidden="true"></video>
+            <div class="cta-zoom__content">
+              <h2 class="cta-zoom__title" id="cta-title">Let's create something that <span class="cta-zoom__accent">matters.<svg class="cta-zoom__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 70 6, 150 5, 215 8 S 285 14, 297 7" /></svg></span></h2>
+              <p class="cta-zoom__text">Campaigns, films and stories that feel like home. Tell me what you're making.</p>
+              <a class="btn btn--light" href="#contact">Work With Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT — portrait on the left with her email and location set over
+         its foot; the inquiry form on the right. "Join the Team" links
+         anywhere on the page land here with that option picked (script.js).
+         CONCEPT: the form shows a thank-you but doesn't send yet; connect it
+         (e.g. Netlify Forms) before launch.
+         Photo: images/contact-*.webp (original in source-images/).
+         ======================================================================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <svg class="contact__divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0v100c500 0 1000-96 1000-96V0H0Z" opacity=".35" />
+        <path d="M1000 0v100C500 100 0 4 0 4V0h1000Z" opacity=".35" />
+        <path d="M0 0v98.9l396.3-84a500.1 500.1 0 0 1 207.4 0l396.3 84V0H0Z" />
+      </svg>
+
+      <div class="container contact__inner">
+        <div class="contact__media">
+          <img class="contact__photo" src="images/contact-720.webp" srcset="images/contact-720.webp 720w, images/contact-888.webp 888w" sizes="(min-width: 1024px) 40vw, 90vw" alt="Myracle smiling in a pinstripe suit and gold jewelry, holding an ice cream cone" width="720" height="957" loading="lazy" decoding="async">
+          <div class="contact__card">
+            <p class="contact__card-label">Management</p>
+            <a class="contact__card-link" href="mailto:mgmt@majormyra.com">mgmt@majormyra.com</a>
+            <p class="contact__card-place">Atlanta, GA</p>
+          </div>
+        </div>
+
+        <div class="contact__body">
+          <p class="contact__eyebrow">Get in touch</p>
+          <h2 class="contact__title" id="contact-title">Tell me your <em>story.</em></h2>
+          <p class="contact__intro">Brand campaigns, films, creative direction, or a seat on the team. Share a few details and I'll get back to you.</p>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <fieldset class="contact-form__topics">
+              <legend class="contact-form__label">What's this about?</legend>
+              <div class="contact-form__chips">
+                <label class="chip"><input type="radio" name="inquiry" value="campaign" checked><span>Brand campaign</span></label>
+                <label class="chip"><input type="radio" name="inquiry" value="film"><span>Short film</span></label>
+                <label class="chip"><input type="radio" name="inquiry" value="direction"><span>Creative direction</span></label>
+                <label class="chip"><input type="radio" name="inquiry" value="team"><span>Join the team</span></label>
+              </div>
+            </fieldset>
+
+            <div class="contact-form__row">
+              <div class="field">
+                <input class="field__input" id="cf-name" name="name" type="text" autocomplete="name" placeholder=" " required>
+                <label class="field__label" for="cf-name">Your name</label>
+              </div>
+              <div class="field">
+                <input class="field__input" id="cf-email" name="email" type="email" autocomplete="email" placeholder=" " required>
+                <label class="field__label" for="cf-email">Email</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <input class="field__input" id="cf-company" name="company" type="text" autocomplete="organization" placeholder=" ">
+              <label class="field__label" for="cf-company" data-default="Brand or company (optional)" data-team="Your role: writer, editor, stylist… (optional)">Brand or company (optional)</label>
+            </div>
+
+            <div class="field">
+              <textarea class="field__input field__input--area" id="cf-message" name="message" rows="4" placeholder=" " required></textarea>
+              <label class="field__label" for="cf-message" data-default="Tell me about the project" data-team="Tell me about you and link your work">Tell me about the project</label>
+            </div>
+
+            <p class="contact-form__error" id="cf-error" role="alert" hidden>Please add your name, a valid email and a short message.</p>
+
+            <button class="btn btn--dark contact-form__submit" type="submit">
+              Send message
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" /></svg>
+            </button>
+          </form>
+
+          <div class="contact-form__done" id="cf-done" tabindex="-1" hidden>
+            <p class="contact-form__done-title">Thank you, it's on its way.</p>
+            <p>I read every message and will be in touch soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER — oversized wordmark, links, contact and socials
+       ========================================================================== -->
+  <footer class="footer">
+    <svg class="footer__divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0v100c500 0 1000-96 1000-96V0H0Z" opacity=".35" />
+        <path d="M1000 0v100C500 100 0 4 0 4V0h1000Z" opacity=".35" />
+        <path d="M0 0v98.9l396.3-84a500.1 500.1 0 0 1 207.4 0l396.3 84V0H0Z" />
+    </svg>
+
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__intro">
+          <p class="footer__tagline">Stories that feel like <em>home.</em></p>
+          <div class="footer__socials">
+            <a class="footer__social" href="https://www.instagram.com/majormyra/" target="_blank" rel="noopener" aria-label="Major Myra on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" /></svg></a>
+            <a class="footer__social" href="https://www.tiktok.com/@majormyra" target="_blank" rel="noopener" aria-label="Major Myra on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.5 3c.3 2.2 1.5 3.6 3.5 3.9v2.6c-1.3.1-2.5-.3-3.5-1v5.9a5.2 5.2 0 1 1-5.2-5.2c.3 0 .5 0 .8.1v2.7a2.5 2.5 0 1 0 1.7 2.4V3h2.7Z" /></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-explore">
+          <h2 class="footer__heading" id="footer-explore">Explore</h2>
+          <ul class="footer__list">
+            <li><a href="#top">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" data-inquiry="team">Join the Team</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="footer__heading">Contact</h2>
+          <ul class="footer__list">
+            <li><a href="mailto:mgmt@majormyra.com">mgmt@majormyra.com</a></li>
+            <li>Atlanta, GA</li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h2 class="footer__heading">Follow</h2>
+          <ul class="footer__list">
+            <li><a href="https://www.instagram.com/majormyra/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@majormyra" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer__wordmark" aria-hidden="true">MAJOR MYRA</p>
+
+      <div class="footer__bottom">
+        <p>&copy; <span id="footer-year">2026</span> Major Myra. All rights reserved.</p>
+        <a class="footer__top-link" href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>
